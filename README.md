@@ -1,5 +1,5 @@
 # Grokking Leetcode Solutions in C++
-##### question names reference: tykurtz
+##### question names reference: [tykurtz](https://gist.github.com/tykurtz/3548a31f673588c05c89f9ca42067bc4)
 
 ## Pattern: Sliding Window
 
