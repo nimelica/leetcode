@@ -1,7 +1,7 @@
 # Grokking Leetcode Solutions in C++
+##### question names reference: tykurtz
 
 ## Pattern: Sliding Window
-##### reference: tykurtz
 
 * https://leetcode.com/problems/maximum-subarray/ # Close enough
 * https://leetcode.com/problems/minimum-size-subarray-sum/
