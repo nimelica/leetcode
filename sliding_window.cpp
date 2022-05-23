@@ -58,6 +58,26 @@ public:
         }
         return mx;
     }
+     
+    int characterReplacement(string s, int k) {
+       if(!s.size()) return 0;
+        
+       int char_map[26] = {0}; //fixed size map
+       int maxlen = 0; //max frequency length
+       int right = 0, left = 0;
+        
+       for(left, right; right < s.size();){ 
+           int count = ++char_map[s[right] - 'A'];
+           maxlen = max(maxlen, count);
+           right++; //expanding window
+           
+           if((right - left) - maxlen > k){
+               --char_map[s[left] - 'A'];
+               left++;
+           }
+       }
+      return right - left;
+    }
   
     int maxSubArray(vector<int>& nums) {
         if(nums.size() <= 1){
