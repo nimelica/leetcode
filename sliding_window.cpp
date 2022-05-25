@@ -78,6 +78,23 @@ public:
        }
       return right - left;
     }
+     
+     // check if s1 permutation is in s2 as substring
+     bool checkInclusion(string s1, string s2) {
+        if(s2.size() < s1.size()) return false;
+        int seen[26] = {0};
+        for(char c : s1){
+            seen[c - 'a']++;
+        }
+        int sub_size = s1.size();
+        for(int left = 0, right = 0; right < s2.size();){
+            if(seen[s2[right++] - 'a']-- > 0) sub_size--;
+            if(sub_size == 0) return true;
+            if(right-left == s1.size() and seen[s2[left++] - 'a']++ >= 0)
+               sub_size++;
+        }
+        return false;
+    }
   
     int maxSubArray(vector<int>& nums) {
         if(nums.size() <= 1){
