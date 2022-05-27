@@ -79,6 +79,19 @@ public:
       return right - left;
     }
      
+    int longestOnes(vector<int>& nums, int k) {
+        int zeros = 0, maxi = 0;
+        for(int left = 0, right = 0; right < nums.size(); ++right){
+            if(nums[right] == 0) zeros++;
+            if(zeros > k){
+                if(nums[left] == 0) zeros--;
+                left++;
+            }
+            maxi = max(maxi, (right-left+1));
+        }
+        return maxi;
+    }
+     
      // check if s1 permutation is in s2 as substring
      bool checkInclusion(string s1, string s2) {
         if(s2.size() < s1.size()) return false;
