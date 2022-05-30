@@ -108,6 +108,26 @@ public:
         }
         return false;
     }
+     
+     vector<int> findAnagrams(string s, string p) {
+        vector<int>ans;
+        if(s.size() == 0){
+            return ans;
+        }
+        vector<int>char_map(26, 0);
+        for(char ch: p){
+            char_map[ch - 'a']++; 
+        }
+        
+        int left = 0, right = 0, count = p.size();
+        while(right < s.size()){
+            //if char_map[s[right]] >= 1, decrease the count and move the right pointer
+            if(char_map[s[right++] - 'a']-- >= 1) count--;
+            if(count == 0) ans.push_back(left);//index 0
+            if(right - left == p.size() and char_map[s[left++] - 'a']++ >= 0) count++;
+        }
+        return ans;
+    }
   
     int maxSubArray(vector<int>& nums) {
         if(nums.size() <= 1){
