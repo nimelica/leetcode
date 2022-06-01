@@ -43,15 +43,15 @@ public:
         return maxFru;
     }
   
-    int lengthOfLongestSubstring(string s) {
+     int lengthOfLongestSubstring(string s) {
         if(s.size() <= 1) return s.size();
-        unordered_set<char>seen;
+        unordered_set<int>seen;
         int mx = INT_MIN;
         for(int left = 0, right = 0; right < s.size(); ){
-            if(seen.find(s[right]) == seen.end()){
-                seen.insert(s[right]);
+            if(!seen.count(s[right])){
                 mx = max(mx, (right-left+1));
-                ++right;
+                seen.insert(s[right]);
+                right++;
             }else{
                 seen.erase(s[left++]);
             }
