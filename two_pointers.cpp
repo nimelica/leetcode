@@ -120,4 +120,19 @@ public:
             nums1[k--] = nums2[j--];
     }
     
+    bool isPalindrome(string s) {
+        if(s.size() < 2) return true;
+        int left = 0, right = s.size()-1;
+        
+        while(left < right){
+            if(!isalnum(s[left])) left++;
+            else if(!isalnum(s[right])) right--;
+            else if(tolower(s[left]) != tolower(s[right])) return false;
+            else{
+                left++, right--;
+            }
+        }
+        return true;
+    }
+    
 };
