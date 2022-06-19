@@ -135,4 +135,21 @@ public:
         return true;
     }
     
+     int containerWithMostWater(vector<int>& height) {
+        if(height.size() <= 1) return 0;
+        int tot_width = height.size();
+        int left = 0, right = height.size()-1;
+        int mx_area = INT_MIN;
+        
+        while(left < right){
+            int width = right-left;
+            int len = min(height[left], height[right]);
+            mx_area = max((width*len), mx_area);
+            
+            if(height[left] < height[right]) left++;
+            else right--;
+        }
+        return mx_area;
+    }
+    
 };
