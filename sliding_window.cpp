@@ -129,18 +129,17 @@ public:
         return ans;
     }
   
-    int maxSubArray(vector<int>& nums) {
-        if(nums.size() <= 1){
-            return nums.size();
+      int maxSubArray(vector<int>& nums) {
+        int sum_so_far = 0;
+        int max_sum = INT_MIN;
+        
+        for(int i=0; i<nums.size(); i++){
+            sum_so_far = sum_so_far + nums[i];
+            max_sum = max(max_sum, sum_so_far); //if max_sum < sum_so_far then max_sum = sum_so_far
+            
+            if(sum_so_far < 0)
+                sum_so_far = 0;
         }
-        int mx = INT_MIN;
-        for(int i = 0; i < nums.size(); ++i){
-            int sum = 0;
-            for(int j = i; j < nums.size(); ++j){
-                sum += nums[j];
-                mx = max(mx, sum);
-            }
-        }
-        return mx;
+        return max_sum;
     }
 };
