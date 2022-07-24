@@ -76,20 +76,42 @@ public:
         }
         return ans;
     }
+    
+     int threeSumSmaller(vector<int>& nums, int target) {
+        if(nums.size() < 3) return 0;
+        sort(nums.begin(), nums.end());
+        int counter = 0;
+        
+        for(int start = 0; start < nums.size(); ++start){
+            int left = start+1, right = nums.size()-1;
+            while(left < right){
+                int sum = nums[start] + nums[left] + nums[right];
+                if(sum >= target){
+                    right--;
+                }
+                else if(sum < target){
+                    counter += (right-left);
+                    left++;
+                }
+            }
+        }
+        return counter;
+    }
+    
      vector<int> sortedSquares(vector<int>& nums) {
         int n = nums.size();
         int low = 0;
         int high = n-1;
         
-        vector<int>v(n);//resutl vector
+        vector<int>v(n);//result vector
         int k = n-1;//start traversing for the end of v till 0   
         
         while(low <= high){
             if(abs(nums[low]) > abs(nums[high])){
-                v[k--]=nums[low] * nums[low];
+                v[k--] =nums[low] * nums[low];
                 low++;
             }else{
-                v[k--]=nums[high] * nums[high];
+                v[k--] =nums[high] * nums[high];
                 high--;
             }
         }
